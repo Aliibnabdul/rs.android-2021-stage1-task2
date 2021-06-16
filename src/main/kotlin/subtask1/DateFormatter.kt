@@ -4,13 +4,14 @@ import java.lang.Exception
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class DateFormatter {
 
     fun toTextDay(day: String, month: String, year: String): String {
         return try {
             val date = LocalDate.of(year.toInt(), month.toInt(), day.toInt())
-            val formatter = DateTimeFormatter.ofPattern("dd MMMM")
+            val formatter = DateTimeFormatter.ofPattern("dd MMMM", Locale("ru"))
             val formattedDate = date.format(formatter)
             val textDayOfTheWeek = getDayOfWeekRu(date.dayOfWeek)
             "$formattedDate, $textDayOfTheWeek"
